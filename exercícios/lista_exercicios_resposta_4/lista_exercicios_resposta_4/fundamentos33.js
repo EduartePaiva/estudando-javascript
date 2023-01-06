@@ -11,4 +11,4 @@ function concatenar (...args) {
 }
 
 console.log(concatenar(vetorInteiro, vetorDouble))
-console.log(concatenar(vetorDouble, vetorString))
+console.log(concatenar(vetorDouble, vetorString, vetorInteiro))

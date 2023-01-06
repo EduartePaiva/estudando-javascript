@@ -35,4 +35,4 @@ function verificacaoDeString(string1, string2) {
     return estaContido
 }
 
-console.log(verificacaoDeString('abcdf', 'dcba'))
+console.log(verificacaoDeString('abcgdf', 'bDaFcg'))
