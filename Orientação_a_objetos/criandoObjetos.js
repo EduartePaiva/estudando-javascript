@@ -10,11 +10,13 @@ const obj2 = new Object
 console.log(obj2)
 
 // Funções construtoras
-function Produto(nome,preco,desc){
-    this.nome = nome
+class Produto {
+    constructor(nome, preco, desc) {
+        this.nome = nome
 
-    this.getPrecoComDesconto = () => {
-        return preco * (1-desc)
+        this.getPrecoComDesconto = () => {
+            return preco * (1 - desc)
+        }
     }
 }
 
