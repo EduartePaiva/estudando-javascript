@@ -5,6 +5,7 @@ let dkzona = 0.7
 let trolls = 0.05
 let cap_dkzona = 580
 let cap_trolls = 920
+let cap_ashforest = 530
 
 function calcular_ap_total_dkzona(dano_kama,dano_monstro,cap,cap_porcentagem_spot){
     let dano_total = 0
@@ -23,5 +24,5 @@ function calcular_ap_total_dkzona(dano_kama,dano_monstro,cap,cap_porcentagem_spo
 }
 
 
-console.log('Dano com kutum: '+calcular_ap_total_dkzona(73,919,cap_trolls,trolls))
-console.log('Dano com secundaria de precisão: '+calcular_ap_total_dkzona(73,818,cap_trolls,trolls))
+console.log('Dano com kutum: '+calcular_ap_total_dkzona(83,889,cap_ashforest,dkzona))
+console.log('Dano com secundaria de precisão: '+calcular_ap_total_dkzona(83,792,cap_ashforest,dkzona))
