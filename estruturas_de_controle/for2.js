@@ -15,4 +15,4 @@ for(let atributo in pessoa){
     console.log(`${atributo} = ${pessoa[atributo]}`)
 }
 
-console.log(atributo)
+//console.log(atributo)
