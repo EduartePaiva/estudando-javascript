@@ -15,10 +15,8 @@ sai da pasta para a anterior
 PARAR O NODEMON É CRTL+C
 
 
-
-
-
-
+npm i node-schedule
+temporizadores
 
 
 
