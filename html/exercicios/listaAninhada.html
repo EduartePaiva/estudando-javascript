@@ -1,0 +1,95 @@
+<header>
+
+</header>
+    <body>
+        <style>
+            .ocultar{
+                display:none
+            }
+            span{
+                cursor:pointer;
+                user-select:none;
+            }
+            span:hover{
+                color: white;
+                text-shadow: 2px 2px 4px #000000;
+            }
+            .span-ocultado{
+                color: white;
+                text-shadow: 2px 2px 4px #000000;
+            }
+
+            
+        </style>
+        <h1>Projeto</h1>
+
+    <ul class="tree" id="">
+        <span ed-folder class="">Ocultar Tudo</span>
+        <li>
+            <span ed-folder class="esconder">backend</span>
+            <ul>
+                <li>
+                    <span ed-folder id="">
+                        app
+                    </span>
+                    <ul>
+                        <li>pruduto.js</li>
+                        <li>usuario.js</li>
+                        <li>venda.js</li>
+                    </ul>
+                </li>
+                <li>
+                    <span ed-folder id="">
+                        config
+                    </span>
+                    <ul>
+                        <li>banco.js</li>
+                        <li>rotas.js</li>
+                        <li>servidor.js</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <span ed-folder id="">
+                frontend
+            </span>
+            <ul>
+                <li>
+                    <span ed-folder id="">
+                        public
+                    </span>
+                    <ul>
+                        <li>app.css</li>
+                        <li>app.js</li>
+                        <li>index.html</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+
+    <script>
+        document.querySelectorAll('[ed-folder]').forEach(elemento => {
+            elemento.onclick = e => {
+                console.log('click')
+                let irmao = elemento.nextElementSibling
+                if(elemento.nextElementSibling.classList.contains('ocultar')){
+                    elemento.classList.remove('span-ocultado')
+                    while(irmao){
+                        irmao.classList.remove('ocultar')
+                        irmao = irmao.nextElementSibling
+                    }
+                }else{
+                    elemento.classList.add('span-ocultado')
+                    while(irmao){
+                        irmao.classList.add('ocultar')
+                        irmao = irmao.nextElementSibling
+                    }
+                }
+            }
+        })
+    </script>
+</body>

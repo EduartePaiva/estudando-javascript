@@ -15,7 +15,12 @@
     <header><h1>Exercícios HTML</h1></header>
     <nav>
         <a href="exercicios/teste.html">00-Teste</a> |
-        <a href="exercicios/texto1.html">01 - Texto 1</a>
+        <a href="exercicios/texto1.html">01 - Texto 1</a>|
+        <a href="exercicios/texto2.html">02 - Texto 2</a>|
+        <a href="exercicios/listas.html">03 - Listas</a>|
+        <a href="exercicios/listaAninhada.html">04 - Lista Aninhada</a>|
+        <a href="exercicios/links.html">05 - Links</a>|
+        <a href="exercicios/tabela.html">06 - Tabela</a>|
         
     </nav>
     <section id="conteudo"> </section>
@@ -30,8 +35,35 @@
                 fetch(link.href)
                     .then(resp => resp.text())
                     .then(html => conteudo.innerHTML = html)
+                    .then(v => {
+                        if(link.href == location.origin+'/html/exercicios/listaAninhada.html'){
+                            executaComAninhada()
+                        }
+                    })
             }
         })
+
+        function executaComAninhada(){
+            document.querySelectorAll('[ed-folder]').forEach(elemento => {
+                elemento.onclick = e => {
+                    console.log('click')
+                    let irmao = elemento.nextElementSibling
+                    if(elemento.nextElementSibling.classList.contains('ocultar')){
+                        elemento.classList.remove('span-ocultado')
+                        while(irmao){
+                            irmao.classList.remove('ocultar')
+                            irmao = irmao.nextElementSibling
+                        }
+                    }else{
+                        elemento.classList.add('span-ocultado')
+                        while(irmao){
+                            irmao.classList.add('ocultar')
+                            irmao = irmao.nextElementSibling
+                        }
+                    }
+                }
+            })
+        }
     </script>
 </body>
 </html>
