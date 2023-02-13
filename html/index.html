@@ -22,6 +22,9 @@
         <a href="exercicios/links.html">05 - Links</a>|
         <a href="exercicios/tabela.html">06 - Tabela</a>|
         <a href="exercicios/form/form.html">07 - Formulário</a>|
+        <a href="exercicios/imagens.html">08 - Imagens</a>|
+        <a href="exercicios/video.html">09 - Video</a>|
+        <a href="exercicios/tagsNaoVisuais.html">10 - Tags Não Visuais</a>|
         
     </nav>
     <section id="conteudo"> </section>
@@ -37,12 +40,74 @@
                     .then(resp => resp.text())
                     .then(html => conteudo.innerHTML = html)
                     .then(v => {
-                        if(link.href == location.origin+'/html/exercicios/listaAninhada.html'){
+                        if(link.href == location.origin+'/exercicios/listaAninhada.html'){
                             executaComAninhada()
+                        }
+
+                        if((link.href == location.origin+'/exercicios/imagens.html')){
+                            imagem()
+                        }
+                        if((link.href == location.origin+'/exercicios/video.html')){
+                            video()
                         }
                     })
             }
         })
+
+        function video(){
+            const meuVideo = document.getElementById('meuVideo')
+            const barraDoPlay = document.querySelector('[wm-progresso] > div')
+            meuVideo.oncontextmenu = () => false
+            meuVideo.onplay = e => atualizarBarra(barraDoPlay,meuVideo)
+            document.querySelector('[wm-play=meuVideo]').onclick = e => meuVideo.play()
+            document.querySelector('[wm-pause=meuVideo]').onclick = e => meuVideo.pause()
+
+            function atualizarBarra(barraDoPlay,video){
+                let porcentagem = (video.currentTime/video.duration*100).toFixed(1)+'%'
+                barraDoPlay.style.width = porcentagem
+                barraDoPlay.innerHTML = porcentagem
+                if(!video.paused){
+                    setTimeout(() => {
+                        atualizarBarra(barraDoPlay,video)
+                    },300)
+                }
+            }
+        }
+
+        function imagem(){
+            const elementos = document.querySelectorAll('[wm-slider] > p')
+            const elementosEmArray = Array.from(elementos)
+            
+            mover_proxImagem(elementosEmArray[0],elementosEmArray)
+            //elementosEmArray.aaaaa
+
+            function mover_proxImagem(imagemAtual,imagens){
+                let indexAtual = imagens.indexOf(imagemAtual)
+                imagemAtual.classList.add('animacao')
+                
+                let largura_tela = innerWidth
+                let largura_da_imagem = imagemAtual.clientWidth
+
+                let larguraDIEP = (largura_da_imagem*100)/largura_tela
+                let tempo_total = (4000*(larguraDIEP+100))/100
+                
+                tempo_total = Math.round(tempo_total)
+                tempo_total = 2667+(tempo_total-4000)
+
+
+                console.log(largura_tela,largura_da_imagem,larguraDIEP,tempo_total)
+
+
+                setTimeout(() => {
+                    imagemAtual.classList.remove('animacao')
+                    indexAtual++
+                    if(indexAtual >= imagens.length){
+                        indexAtual = 0
+                    }
+                    mover_proxImagem(imagens[indexAtual],imagens)
+                },tempo_total)
+            }
+        }
 
         function executaComAninhada(){
             document.querySelectorAll('[ed-folder]').forEach(elemento => {

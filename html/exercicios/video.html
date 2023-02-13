@@ -1,0 +1,68 @@
+<head>
+    <style>
+        .progresso{
+            height: 20px;
+            width: 500px;
+            border: solid 1px #444;
+            margin: 20px;
+        }
+    
+        .progresso > div {
+            background-color: red;
+            color: #fff;
+            height: 100%;
+            text-align: left;
+            font-size: 14px;
+            width: 0px;
+        }
+    </style>
+</head>
+
+<!--autoplay toca automaticamente o video-->
+<body>
+    <video  id="meuVideo" width="800" height="450" controls autoplay controlsList="nodownload">
+        <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+        Seu browser não suporta a tag de vídeo.
+    </video>
+    
+    <div wm-progresso="meuVideo" class="progresso">
+        <div></div>
+    </div>
+    
+    <div>
+        <button wm-play="meuVideo">Play</button>
+        <button wm-pause="meuVideo">Pause</button>
+    </div>
+    
+    <script>
+        const meuVideo = document.getElementById('meuVideo')
+        const barraDoPlay = document.querySelector('[wm-progresso] > div')
+        meuVideo.oncontextmenu = () => false
+        meuVideo.onplay = e => atualizarBarra(barraDoPlay,meuVideo)
+        document.querySelector('[wm-play]').onclick = e => play(meuVideo)
+        document.querySelector('[wm-pause]').onclick = e => pause(meuVideo)
+
+
+        function play(video){
+            video.play()
+        }
+
+        function pause(video){
+            video.pause()
+        }
+
+        function atualizarBarra(barraDoPlay,video){
+            barraDoPlay.style.width = ((video.currentTime*100)/video.duration).toFixed(2)+'%'
+            if(!video.paused){
+                setTimeout(() => {
+                    atualizarBarra(barraDoPlay,video)
+                },300)
+            }
+        }
+
+        
+
+    
+    </script>
+
+</body>
