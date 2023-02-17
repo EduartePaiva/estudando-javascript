@@ -10,43 +10,105 @@
         body{
             background-color: rgb(212, 210, 212);
             margin: 0;
+            font-family: 'Oswald';
+            font-size: 20px;
         }
 
         .cabecalho{
-            position: relative; 
             height: 80px;
             background-color: rgb(52,51,52);
             border-bottom: solid 6px skyblue;
             box-sizing: border-box;
-
-
+            display: flex;
         }
 
-        .logo a img{
-            height: 50px;
-        }
-
-        .logo{
-            padding: 10px;
-            position: absolute;
-        }
-
-        .menu-toggle{
-            text-align: left;
-        }
+        /* Menu */
 
         .menu{
-            font-size: 20px;
-            font-family: 'Oswald';
+            flex: 4;
+        }
+        
+        /* menu v2 usando pura magica do flex */
+
+        .menu .menu-clicado{
+            color: black;
+            background-color: skyblue;
+        }
+        
+        .menu ul{
+            padding-left: 0;
+            margin: 0;
+            display: flex;
+            height: 100%;
+            align-items: center;
+            gap: 10px;
+
         }
 
-        .menu a {
+        .menu ul li{
+            flex: 1;
+            text-align: center;
+            max-width: 80px;
+            display: flex;
+        }
+        
+        .menu a{
+            flex: 1;
+            padding: 10px 0;
             text-decoration: none;
             color: white;
         }
-        .menu ul li{
-            text-decoration: none;
+
+        .menu a:hover{
+            color: black;
+            background-color: skyblue;
         }
+
+        /* //////////////////////// */
+        
+        /* Logo */
+        .logo{
+            padding: 10px;
+            flex: 1;
+        }
+        .logo a img{
+            height: 50px;
+        }
+        
+        /* //////////////////////// */
+        
+        .menu-toggle{
+            display: inline-block;
+            display: none;
+            position: absolute;
+            right: 0;
+            flex: 1;
+        }
+
+        /* Meny de login */
+
+        .autenticacao{
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+
+        .autenticacao a{
+            text-decoration: none;
+            text-align: center;
+            color: white;
+
+        }
+        .autenticacao .botao{
+            text-decoration: none;
+            border-radius: 20px;
+            background-color: rgba(255, 0, 0, 0.747);
+            padding: 5px 15px;
+        }
+
 
     </style>
 </head>
@@ -73,7 +135,7 @@
                     <a href="#sobre">Sobre</a>
                 </li>
                 <li>
-                    <a href="#contato">Contato</a>
+                    <a href="#contato">Contatos</a>
                 </li>
             </ul>
         </nav>
@@ -84,7 +146,17 @@
     </header>
 
     <script>
-        // ...
+        window.onhashchange = () => {
+            let elemento = document.querySelector(`.menu a[href='${location.hash}']`)
+            padronizarOsOutrosLinks()
+            if(elemento) elemento.classList.add('menu-clicado')
+        }
+        
+        function padronizarOsOutrosLinks(){
+            let elemento = document.querySelector('.menu-clicado')
+            if(elemento) elemento.classList.remove('menu-clicado')
+        }
+
     </script>
 </body>
 
