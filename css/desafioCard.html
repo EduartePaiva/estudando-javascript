@@ -4,8 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <title>Desafio Card</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <style>
-        /* ... */
+        :root{
+            --largura: 264px;
+            --altura: 307px;
+        }
+
+        body{
+            font-family: verdana,sans-serif;
+        }
+
+        .flexbox{
+            display: flex;
+        }
+
+        .curso{
+            width: var(--largura);
+            height: var(--altura);
+            border: solid 1px #ccc;
+            box-shadow: 0px 4px 20px hsla(0, 0%, 0%, 0.3);
+            height: 300px;
+            width: 260px;
+            margin: 5px 20px;
+            padding: 5px;
+            
+        }
+        .curso img{
+            width: 100%;
+            max-height: 50%;
+        }
+
+        .curso-info{
+            padding: 10px;
+            height: 90px;
+            overflow: hidden;
+            height: 100px;
+        }
+        
+        .curso-info h4{
+            font-size: 1.4em;
+            font-weight: 100;
+            margin: 0px;
+        }
+
+        .curso-preco{
+            text-align: end;
+            vertical-align: bottom;
+            padding-top: 10px;
+        }
+        .preco-de{
+            color: firebrick;
+            text-decoration:line-through;
+        }
+        .preco-por{
+            color: green;
+            font-weight: bold;
+            font-size: 1.4em;
+            
+        }
+
+
     </style>
 </head>
 
@@ -16,7 +75,7 @@
     <img src="http://files.cod3r.com.br/curso-web/card.png" height="340" alt="Objetivo">
 
     <h2>Resultado</h2>
-    <div>
+    <div class="flexbox">
         <div class="curso">
             <img src="http://files.cod3r.com.br/curso-web/curso1.jpg" />
             <div class="curso-info">
@@ -27,8 +86,7 @@
                 <span class="preco-de">R$80,00</span>
                 <span class="preco-por">R$50,00</span>
             </div>
-        </div>
-        <div class="curso">
+        </div><div class="curso">
             <img src="http://files.cod3r.com.br/curso-web/curso2.jpg" />
             <div class="curso-info">
                 <h4>Web Moderno com Javascript + Projetos</h4>
