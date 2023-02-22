@@ -33,7 +33,7 @@
             text-decoration: none;
             color: #eee;
             font-size: 1.3em;
-            padding: 10px 15px;
+            padding: 10px 10px;
         }
         
         .menu a:hover {
@@ -54,6 +54,28 @@
         /* ==================== */
         /* Solução com Flex Box */
         /* ==================== */
+        .cabecalho{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .menu{
+            flex-grow: 10;
+        }
+
+        .menu ul{
+            display: flex;
+            /* justify-content: space-around; */
+        }
+
+        .menu li{
+            margin: 0px 3px;
+        }
+        .menu a{
+            display: block;
+            text-align: center;
+        }
+
     </style>
 </head>
 
@@ -85,6 +107,25 @@
             <a href="#registar" class="botao destaque">Registrar</a>
         </aside>
     </header>
+
+    <script>
+        const itensDoMenu = Array.from(document.querySelectorAll('.menu ul li'))
+
+        //tudosElementosDoMesmoTamanho()
+        function tudosElementosDoMesmoTamanho(){
+            let maiorValor=itensDoMenu.map(itenDoMenu => itenDoMenu.getBoundingClientRect().width).reduce((acumulador,atual) => {
+                if(atual > acumulador){
+                    return atual
+                }else{
+                    return acumulador
+                }
+            })
+
+            itensDoMenu.forEach(itemDoMenu => itemDoMenu.style.width = `${maiorValor}px`)
+
+        }
+        
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,72 @@
+//antes faça /cd anotacoes
+// npx sass --watch sassInput.scss style.css
+*{
+    box-sizing: border-box;
+}
+
+.dom{
+    grid-area: dom;
+}
+.seg{
+    grid-area: seg;
+}
+.ter{
+    grid-area: ter;
+}
+.qua{
+    grid-area: qua;
+}
+.qui{
+    grid-area: qui;
+}
+.sex{
+    grid-area: sex;
+}
+.sab{
+    grid-area: sab;
+}
+
+
+body{
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 60px 1fr 1fr;
+    grid-template-areas: 'dom seg ter qua qui sex sab';
+    margin: 0;
+
+}
+
+
+
+
+p{
+    padding: 0;
+    margin: 0;
+    display: block;
+    height: 100%;
+    border: solid 3px black;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.conteudo{
+    p{
+        font-size: 1rem;
+        align-items: start;
+        background-color: darkgray;
+    }
+}
+
+.respostas{
+    grid-column-start: 1;
+    grid-column-end: 8;
+    
+    p{
+        align-items: start;
+    }
+}

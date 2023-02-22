@@ -18,6 +18,8 @@ PARAR O NODEMON É CRTL+C
 npm i node-schedule
 temporizadores
 
+npm init -y cria o package.json
+
 
 
 
