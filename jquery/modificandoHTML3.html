@@ -20,6 +20,17 @@
             { nome: 'Julia', nota: 9.7 }
         ]
         
-        // ...
+        // ... criar uma table, dentro ter as linhas tr e table data que são as colunas
+        desafio(pessoas)
+        function desafio(pessoas){
+            $('#conteudo').append('<table><tbody>')
+            const nomes = pessoas.map(pessoa => 
+                `<tr>
+                    <td>${pessoa.nome}</td>
+                    <td>${pessoa.nota}</td>
+                </tr>`
+            )
+            $('#conteudo table tbody').append(nomes)
+        }
     </script>
 </body>
