@@ -22,6 +22,43 @@
     </div>
 
     <script>
-        // ...
+        (function($){
+            $.fn.girar = function(valor,duracao,callback){
+                this.animate(
+                    {transform: `+=${valor}`},{
+                        step: function (valor){
+                            $(this).css('transform', `rotate(${valor}deg)`)
+                        },
+                        duration: duracao
+                    },
+                    'linear',
+                    callback
+                )
+            }
+
+            $.fn.interpretar = function(){
+                const retirarChaves = s => s.substring(2, s.length-2)
+                const conteudo = $(this).html()
+                const expressoesComChaves = conteudo.match(/\{\{.+\}\}/g)
+                const expressoes = expressoesComChaves.map(retirarChaves)
+                const resultados = expressoes.map(e => eval(e))
+
+                let conteudoFinal = conteudo
+
+                for(let i=0;i<expressoesComChaves.length;i++){
+                    conteudoFinal = conteudoFinal.replace(
+                        expressoesComChaves[i], resultados[i]
+                    )
+                }
+
+                $(this).html(conteudoFinal)
+                return this
+            }
+
+            $('div').interpretar().girar(3300,3000)
+
+        })(jQuery)
+
+
     </script>
 </body>
