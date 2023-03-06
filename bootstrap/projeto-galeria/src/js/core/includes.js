@@ -1,4 +1,13 @@
-//import $ from 'jquery'
+import $ from 'jquery'
+
+const loadHtmlSuccessCallbacks = []
+
+export function onLoadHtmlSuccess(callback){
+    if(!loadHtmlSuccessCallbacks.includes(callback)){
+        console.log(callback)
+        loadHtmlSuccessCallbacks.push(callback)
+    }
+}
 
 function loadIncludes(parent){
     if(!parent) parent = 'body'
@@ -9,6 +18,8 @@ function loadIncludes(parent){
             success(data){
                 $(e).html(data)
                 $(e).removeAttr('wm-include')
+                console.log('teste')
+                loadHtmlSuccessCallbacks.forEach(callback => callback(data))
 
                 loadIncludes(e)
             }
@@ -16,8 +27,8 @@ function loadIncludes(parent){
     })
 }
 
-loadIncludesSemjquery()
-//loadIncludes()
+//loadIncludesSemjquery()
+loadIncludes()
 
 function loadIncludesSemjquery(parent){
     if(!parent){
@@ -31,7 +42,8 @@ function loadIncludesSemjquery(parent){
         fetch(url)
             .then(resposta => resposta.text())
             .then(resp2 => e.innerHTML = resp2)
-            .then(loadIncludesSemjquery(e))
+            .then(resp => e.removeAttribute('wm-include'))
+            .then(resp => loadIncludesSemjquery(e))
             .catch(console.log)
     })
 

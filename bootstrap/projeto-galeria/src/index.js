@@ -7,3 +7,4 @@ import 'bootstrap/dist/js/bootstrap.bundle'
 //Meus arquivos JS
 
 import './js/core/includes'
+import './js/plugins/cityButtons'
