@@ -2,7 +2,7 @@ import React from "react";
 //import ReactDOM from 'react-dom'
 import {createRoot} from "react-dom/client";
 
-import Saudacao from "./componentes/Saudacao";
+import Pai from "./componentes/Pai";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -12,7 +12,7 @@ const root = createRoot(container);
 
 root.render(
 	<div>
-		<Saudacao tipo="Bom dia" nome="Eduarte"></Saudacao>
+		<Pai sobrenome="Paiva" nome="Eduardo"/>
 	</div>
 );
 
