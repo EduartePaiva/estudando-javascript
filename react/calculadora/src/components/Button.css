@@ -11,3 +11,27 @@
     border-bottom: var(--border-button);
     outline: none;
 }
+
+.button:active{
+    background-color: #ccc;
+}
+
+.operador{
+    background-color: #fa8231;
+    color: #fff;
+}
+.operador:active{
+    background-color: #fa8231cc;
+}
+
+
+
+.ac{
+    grid-column: span 2;
+}
+.zero{
+    grid-column: span 2;
+}
+.numero{
+
+}
