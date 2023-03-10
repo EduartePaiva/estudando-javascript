@@ -1,16 +1,16 @@
+/* eslint-disable react/no-direct-mutation-state */
 import React, { Component } from "react";
 import './Calculator.css'
 import Display from "../components/Display";
-
 import Button from "../components/Button";
-import { values } from "lodash";
 
 const initialState = {
     displayValue: '0',
     clearDisplay: false,
     operation: null,
     values: [0, 0],
-    current: 0
+    current: 0,
+    operacaoCont: 0
 }
 
 export default class Calculator extends Component {
@@ -19,6 +19,7 @@ export default class Calculator extends Component {
         this.clearMemory = this.clearMemory.bind(this)
         this.setOperation = this.setOperation.bind(this)
         this.setDigit = this.setDigit.bind(this)
+        this.calculaValor = this.calculaValor.bind(this)
         this.state = { ...initialState }
 
 
@@ -28,15 +29,52 @@ export default class Calculator extends Component {
         this.setState({ ...initialState })
     }
 
+    calculaValor(num1,num2,operador){
+        switch(operador){
+            case '/':return num1/num2
+            case '*':return num1*num2
+            case '+':return num1+num2
+            case '-':return num1-num2
+            default: return 0
+        }
+    }
+
     setOperation(operation) {
         if (this.state.current === 0) {
             this.setState({ operation, current: 1, clearDisplay: true })
+        }else{
+            const clickedEqual = operation === '='
+            const currentOperation = this.state.operation
+            const operacaoCont = this.state.operacaoCont+1
+
+            const values = [...this.state.values]
+            values[0] = this.calculaValor(values[0],values[1],currentOperation)
+            values[1] = 0
+            console.log(values)
+            this.setState({
+                displayValue: parseFloat(values[0].toPrecision(12)),
+                operation: clickedEqual ? null : operation,
+                current: clickedEqual ? 0 : 1,
+                currentDisplay: !clickedEqual,
+                values,
+                operacaoCont,
+                clearDisplay: true
+            })
+            
         }
     }
 
     setDigit(n) {
-        if (n === '.' && this.state.displayValue.includes('.')) {
-            return
+        if(n==='.'){
+            if(this.state.displayValue === '0' || this.state.clearDisplay){
+                this.setState({displayValue: '0.'})
+                this.state.displayValue = '0.'
+                this.state.clearDisplay = false
+            }
+    
+            if (this.state.displayValue.includes('.')) {
+                return
+            }
         }
 
         if (n === '<-') {
@@ -60,7 +98,7 @@ export default class Calculator extends Component {
             const values = [...this.state.values]
             values[i] = newValue
             this.setState({ values })
-            console.log(values)
+            //console.log(values)
         }
     }
 

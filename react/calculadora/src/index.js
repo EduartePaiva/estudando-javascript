@@ -12,4 +12,7 @@ root.render(
 	</div>
 );
 
+let paragrafo = document.getElementsByClassName('paragrafo')
+console.log(paragrafo)
+
 reportWebVitals();
