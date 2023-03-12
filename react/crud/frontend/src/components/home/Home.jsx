@@ -1,6 +1,6 @@
 import React from "react";
 import Main from "../template/Main";
-import { faHome, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faHome} from '@fortawesome/free-solid-svg-icons'
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default props =>

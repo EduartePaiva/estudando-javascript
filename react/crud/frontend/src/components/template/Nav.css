@@ -16,3 +16,30 @@ aside.menu-area{
 .menu a:hover{
     background: linear-gradient(135deg,#07a7e3 0%, #32dac3 100%);
 }
+
+@media(max-width: 768px){
+    .menu{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        justify-content: space-around;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    .menu-area{
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        margin: 0px;
+        height: 100%;
+    }
+
+    
+}

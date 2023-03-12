@@ -1,6 +1,7 @@
 import './Nav.css'
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom'
 
 
 
@@ -9,11 +10,11 @@ export default props =>
     <aside className="menu-area">
         <nav className="menu">
             {/* Refatorar em casa! um navitem.jsx */}
-            <a href="#/">
+            <Link to="/">
                 <FontAwesomeIcon icon={props.iconHome} /> Inicio
-            </a>
-            <a href="#/users">
+            </Link>
+            <Link to="/users">
                 <FontAwesomeIcon icon={props.iconUsers} /> Usuários
-            </a>
+            </Link>
         </nav>
     </aside>
