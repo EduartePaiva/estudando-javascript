@@ -1,5 +1,6 @@
 import Navegador from "@/components/Navegador"
 
+
 export default function Inicio(){
     return (
         <div style={{
@@ -14,6 +15,8 @@ export default function Inicio(){
            <Navegador cor={'#9400d3'} texto={'Exemplo'} destino={'/exemplo'}/>
            <Navegador cor={'crimson'} texto={'JSX'} destino={'/jsx'}/>
            <Navegador cor={'green'} texto={'Navegação #01'} destino={'/navegacao'}/>
+           <Navegador cor={'blue'} texto={'Navegação #02'} destino={'/cliente/sp-2/123'}/>
+           <Navegador cor={'red'} texto={'Componente com Estado'} destino={'/estado'}/>
         </div>
     )
 }
