@@ -1,6 +1,6 @@
 <template>
     <main>
-        <h1>Calculador</h1>
+        <h1>Calculadora</h1>
         <Calculator/>
 
     </main>
