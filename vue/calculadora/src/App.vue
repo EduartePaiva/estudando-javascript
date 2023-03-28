@@ -12,7 +12,6 @@
 import Calculator from './main/Calculator.vue'
 
 
-
 </script>
 
 <style lang="scss" scoped>

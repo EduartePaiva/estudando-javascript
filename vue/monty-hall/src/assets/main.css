@@ -1,0 +1,9 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    color: #fff;
+    background: linear-gradient(to right, rgb(21,153,87), rgb(21,87,153));
+}
