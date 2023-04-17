@@ -1,0 +1,22 @@
+db.estados.count()
+
+db.estados.remove({sigla: 'AC'})
+db.estados.removeOne({sigla: 'AC'})
+
+db.estados.remove({populacao: {$exists: true}}, 1)
+
+16720000
+
+db.estados.updateOne(
+    {sigla: 'RJ'},
+    {$set: {populacao:16720000}}
+)
+
+db.estados.updateOne(
+    {sigla: 'SP'},
+    {$set: {populacao:45340000}}
+)
+
+db.estados.remove(
+    {populacao: {$lt:20000000}}
+)
